@@ -38,24 +38,30 @@ public class Exercicio4Adivinhaonum extends Application {
 		TextField nameFld = new TextField();
 		
 		Label msg2 = new Label();
+
 		// Botones
 		btnProba.setOnAction(e -> {
-			int n = Integer.parseInt(nameFld.getText());
-			if (n > i && n<=100) {
-				msg.setStyle("-fx-background-color: transparent");
-				msg.setText("O número é mais baixo");
-				contador++;
-			} else if (n < i) {
-				msg.setStyle("-fx-background-color: transparent");
-				msg.setText("O número é mais alto");
-				contador++;
-			}
-			else if (n == i) {
-				msg.setStyle("-fx-background-color: lightgreen");
-				msg.setText("Correcto o número é: " + i);
-				contador++;
-			}
-			msg2.setText("Intentos: " + contador);
+			try {
+				int n = Integer.parseInt(nameFld.getText());
+				if (n > i && n<=100) {
+					msg.setStyle("-fx-background-color: transparent");
+					msg.setText("O número é mais baixo");
+					contador++;
+				} else if (n < i) {
+					msg.setStyle("-fx-background-color: transparent");
+					msg.setText("O número é mais alto");
+					contador++;
+				}
+				else if (n == i) {
+					msg.setStyle("-fx-background-color: lightgreen");
+					msg.setText("Correcto o número é: " + i);
+					contador++;
+				}
+				msg2.setText("Intentos: " + contador);
+			
+		} catch(NumberFormatException ex) {
+			msg.setText("O caracter introducido non é un número");
+		}
 		});
 		
 		
