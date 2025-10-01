@@ -22,6 +22,8 @@ public void start(Stage stage) {
 	
 	HBox root2 = new HBox();
 	
+	int Ancho = 0, Alto = 0;
+	
 	Label msgAnch = new Label();
 	msgAnch.setText("Novo ancho");
 	TextField txtAnch = new TextField();
@@ -33,13 +35,15 @@ public void start(Stage stage) {
 	txtAlt.setPromptText("Indica a nova altura");
 	
 	btnRedim.setOnAction(e ->{
-		
+		if(Ancho >= 0 && Alto>=0) {
+			
+		}
 	});
 		
 	
 	root.setSpacing(5);
-	root.getChildren().addAll(); 
-	root2.getChildren().addAll(txtAnch,txtAlt);
+	root.getChildren().addAll(msgAnch, txtAnch, msgAlt, txtAlt, btnRedim); 
+	
 	
 	Scene scene = new Scene(root, 300, 200);
 	stage.setScene(scene);
