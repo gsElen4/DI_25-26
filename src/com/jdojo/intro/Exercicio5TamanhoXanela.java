@@ -34,15 +34,25 @@ public void start(Stage stage) {
 	TextField txtAlt = new TextField();
 	txtAlt.setPromptText("Indica a nova altura");
 	
+	  HBox boxAncho = new HBox(10, msgAnch, txtAnch);
+      HBox boxAlto = new HBox(10, msgAlt, txtAlt);
+
+	
 	btnRedim.setOnAction(e ->{
-		if(Ancho >= 0 && Alto>=0) {
-			
-		}
-	});
+		int Vancho = Integer.parseInt(txtAnch.getText());
+		int Valto = Integer.parseInt(txtAlt.getText());
 		
+		if(Ancho >= 0 && Alto>=0) {
+			stage.setWidth(Vancho);
+			stage.setWidth(Valto);
+		} else {
+            System.out.println("Erro: Os valores deben ser positivos.");
+        }
+      });
+			
 	
 	root.setSpacing(5);
-	root.getChildren().addAll(msgAnch, txtAnch, msgAlt, txtAlt, btnRedim); 
+	root.getChildren().addAll(boxAncho, boxAlto, btnRedim); 
 	
 	
 	Scene scene = new Scene(root, 300, 200);
