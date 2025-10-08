@@ -23,20 +23,31 @@ public class Exercicio6MiniCuestionario extends Application {
 		"\n" + "- A Coruña" + "\n" + "- Santiago de Compostela"+ "\n" + "- Vigo");
 		 //Boton
 		Button btn = new Button("Enviar resposta");
+		
 		//Cuadro de texto
 		TextField nameFld = new TextField();
 	btn.setOnAction(e ->{
-		if(nameFld.equals("a coruña")) {
-			root.setStyle("-fx-background-color: red");
-		}else if (nameFld.equals("santiago de compostela")) {
-			root.setStyle("-fx-background-color: green");
-		}else if (nameFld.equals("vigo")) {
-			root.setStyle("-fx-background-color: red");
+		if(nameFld.getText().isEmpty()){
+			nameFld.setPromptText("Campo obrigatorio");
+			
 		}else {
-			root.setStyle("-fx-background-color: orange");
+			switch(nameFld.getText().toLowerCase().trim()) {
+				case "a coruña": 
+					root.setStyle("-fx-background-color: red");
+					break;
+				case "santiago de compostela": 
+					root.setStyle("-fx-background-color: green");
+					break;
+				case "vigo": 
+					root.setStyle("-fx-background-color: red");
+					break;
+			
+				default:
+					root.setStyle("-fx-background-color: orange");
+					break;
+			}
 		}
-	});	
-		
+	});
 		root.getChildren().addAll(lbl, nameFld,btn);
 
 		root.setSpacing(5);
@@ -44,6 +55,8 @@ public class Exercicio6MiniCuestionario extends Application {
 		stage.setScene(scene);
 		stage.setTitle("Mini Cuestionario");
 		stage.show();
-	}
+	
 
+	}
 }
+
