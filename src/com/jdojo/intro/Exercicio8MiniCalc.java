@@ -19,6 +19,7 @@ public class Exercicio8MiniCalc extends Application {
 		// opciones
 		TextField Op1 = new TextField("Operando 1");
 		TextField Op2 = new TextField("Operando 2");
+		
 
 		Label lblRes = new Label("Resultado");
 		Label lblResNum = new Label();
@@ -29,31 +30,49 @@ public class Exercicio8MiniCalc extends Application {
 		Button btnResta = new Button("-");
 		Button btnMult = new Button("x");
 		Button btnDiv = new Button("/");
-		try {
-		if() {
+		
 		btnSuma.setOnAction(e -> {
-
+			if(isNumeric(Op1.getText()) && isNumeric(Op2.getText())) {
+				lblResNum.setText(
+				String.valueOf(Double.parseDouble(Op1.getText()) + Double.parseDouble(Op2.getText())));
+			}else {
+				lblResNum.setText("Falta algún operando");
+			}
 		});
 
 		btnResta.setOnAction(e -> {
-
+			if(isNumeric(Op1.getText()) && isNumeric(Op2.getText())) {
+				lblResNum.setText(
+				String.valueOf(Double.parseDouble(Op1.getText()) - Double.parseDouble(Op2.getText())));
+			}else {
+				lblResNum.setText("Falta algún operando");
+			}
 		});
 		btnMult.setOnAction(e -> {
+			if(isNumeric(Op1.getText()) && isNumeric(Op2.getText())) {
+				lblResNum.setText(
+				String.valueOf(Double.parseDouble(Op1.getText()) * Double.parseDouble(Op2.getText())));
+			}else {
+				lblResNum.setText("Falta algún operando");
+			}
 
 		});
 
 		btnDiv.setOnAction(e -> {
-
+			if(isNumeric(Op1.getText()) && isNumeric(Op2.getText())) {
+				lblResNum.setText(
+				String.valueOf(Double.parseDouble(Op1.getText()) / Double.parseDouble(Op2.getText())));
+			}else {
+				lblResNum.setText("Falta algún operando");
+			}
 		});
-		}
-		}catch (NumberFormatException e){
-			msg.setText("Introduce un numero valido");
-		}
+		
+	
 
 		HBox root = new HBox();
 		root.setSpacing(5);
 		root.getChildren();
-		root.getChildren().addAll(Op1, Op2, lblRes, btnSuma, btnResta, btnMult, btnDiv);
+		root.getChildren().addAll(Op1, Op2, lblRes, btnSuma, btnResta, btnMult, btnDiv,lblResNum);
 		Scene scene = new Scene(root, 600, 50);
 
 		stage.setScene(scene);
