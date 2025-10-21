@@ -7,5 +7,6 @@ module HolaFX {
     requires javafx.web;
     requires javafx.fxml;
     requires jdk.jsobject;
+	requires javafx.base;
     opens com.jdojo.intro to javafx.graphics, javafx.base;
 }
