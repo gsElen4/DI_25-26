@@ -7,6 +7,8 @@ public class Exercicio14Cuentas {
 
 	acc2.balanceProperty().bind(acc1.balanceProperty());
 	
-	
+	acc2.balanceProperty().addListener(obs ->{
+		System.out.println("O valor de acc2 está invalidado");
+	});
 }
 }
