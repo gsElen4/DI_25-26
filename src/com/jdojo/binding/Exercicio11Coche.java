@@ -5,8 +5,8 @@ public class Exercicio11Coche {
 	private static int velocidade;
 	
 	public Exercicio11Coche() {
-		
 	}
+	
 	
 	public String getMarca() {
 		return marca;
