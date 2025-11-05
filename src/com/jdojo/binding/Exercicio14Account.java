@@ -25,7 +25,7 @@ public class Exercicio14Account {
 	}
 	
 	public final DoubleProperty balanceProperty() {
-		return this.balanceProperty();
+		return this.balance;
 	}
 
 }
