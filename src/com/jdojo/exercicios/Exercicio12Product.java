@@ -1,4 +1,4 @@
-package com.jdojo.binding;
+package com.jdojo.exercicios;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;

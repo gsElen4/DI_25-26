@@ -1,4 +1,4 @@
-package com.jdojo.binding;
+package com.jdojo.exercicios;
 
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;

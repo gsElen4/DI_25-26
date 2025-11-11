@@ -1,4 +1,4 @@
-package com.jdojo.binding;
+package com.jdojo.exercicios;
 
 public class Exercicio14Cuentas {
 	public static void main(String[] args) {

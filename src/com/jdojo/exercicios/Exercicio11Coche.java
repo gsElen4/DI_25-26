@@ -1,4 +1,4 @@
-package com.jdojo.binding;
+package com.jdojo.exercicios;
 
 public class Exercicio11Coche {
 	private String marca;

@@ -10,4 +10,5 @@ module HolaFX {
 	requires javafx.base;
     opens com.jdojo.intro to javafx.graphics, javafx.base;
     opens com.jdojo.binding to javafx.graphics, javafx.base;
+    opens com.jdojo.exercicios to javafx.graphics, javafx.base;
 }
