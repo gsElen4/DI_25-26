@@ -12,4 +12,5 @@ module HolaFX {
     opens com.jdojo.binding to javafx.graphics, javafx.base;
     opens com.jdojo.exercicios to javafx.graphics, javafx.base;
     opens com.jdojo.correxidos to javafx.graphics, javafx.base;
+    opens GonzalezSeguel_Elena to javafx.graphics, javafx.base;
 }
