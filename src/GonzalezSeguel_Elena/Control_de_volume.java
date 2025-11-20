@@ -26,7 +26,7 @@ public class Control_de_volume extends Application {
 	//slider1.valueProperty().bindBidirectional(nivel.);
 		
 		slider1.setOrientation(Orientation.HORIZONTAL);
-		try {
+		
 		if(perc<30) {
 			NivelLbl.setText("Baixo");
 		} else if(perc>=30 && perc<=70) {
@@ -46,9 +46,9 @@ public class Control_de_volume extends Application {
         // keep in mind that isBound() doesn't work for bidirectional binding
       //  System.out.println(slider1.valueProperty().isBound()); 
         // false
-        
+   /*     
 	} Finally
-	}
+	}*/
 }
     public static void main(String[] args) {
         launch(args);
