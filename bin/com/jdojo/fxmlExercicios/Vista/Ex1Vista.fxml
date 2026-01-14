@@ -7,28 +7,15 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity"
-	minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
-	prefWidth="600.0" xmlns="http://javafx.com/javafx/25"
-	xmlns:fx="http://javafx.com/fxml/1"
-	fx:controller="com.jdojo.fxmlExercicios.Controlador.Ex1Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jdojo.fxmlExercicios.Controlador.Ex1Controller">
 	<children>
-		<Label id="Op1" fx:id="LblOp1" layoutX="177.0" layoutY="80.0"
-			text="Operando 1" />
-		<Label id="Op2" fx:id="LblOp2" layoutX="177.0" layoutY="116.0"
-			text="Operando 2" />
-		<Label id="Resultado" fx:id="LblResultado" layoutX="190.0"
-			layoutY="218.0" text="Resultado" />
-		<TextField id="Operando1" fx:id="Operando1" layoutX="291.0"
-			layoutY="76.0" />
-		<TextField id="Operando2" fx:id="Operando2" layoutX="291.0"
-			layoutY="112.0" />
-		<TextField id="Resultado" fx:id="Resultado" layoutX="291.0"
-			layoutY="214.0" />
-		<Button id="btnSumar" fx:id="btnSumar" layoutX="165.0"
-			layoutY="162.0" mnemonicParsing="false" onAction="#sumar"
-			prefHeight="25.0" prefWidth="271.0" text="Sumar">
+		<Label id="Op1" fx:id="LblOp1" layoutX="177.0" layoutY="80.0" text="Operando 1" />
+		<Label id="Op2" fx:id="LblOp2" layoutX="177.0" layoutY="116.0" text="Operando 2" />
+		<Label id="Resultado" fx:id="LblResultado" layoutX="190.0" layoutY="218.0" text="Resultado" />
+		<TextField id="Operando1" fx:id="Operando1" layoutX="291.0" layoutY="76.0" />
+		<TextField id="Operando2" fx:id="Operando2" layoutX="291.0" layoutY="112.0" />
+		<TextField id="Resultado" fx:id="Resultado" layoutX="291.0" layoutY="214.0" />
+		<Button id="btnSumar" fx:id="btnSumar" layoutX="165.0" layoutY="162.0" mnemonicParsing="false" onAction="#sumar" prefHeight="25.0" prefWidth="271.0" text="Sumar">
 			<opaqueInsets>
 				<Insets />
 			</opaqueInsets>
