@@ -3,67 +3,65 @@ package com.jdojo.ExCorrexidosT3;
 import javafx.application.Application;
 import javafx.beans.binding.Bindings;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.Slider;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class Exercicio5 extends Application {
 
-    @Override
-    public void start(Stage stage) throws Exception {
-        //1. Creamos os controis
-        Label opacityLabel = new Label("Opacidade:");
-        Slider opacitySld = new Slider(0.0, 1.0, 0.5);
+	@Override
+	public void start(Stage stage) {
+		// O primeiro é crear os controis
+		Label opacityLabel = new Label("Opacidade: 1.0");
+		Slider opacitySlider = new Slider(0.0, 1.0, 1.0);
 
-        CheckBox resizableBox = new CheckBox("Redimensionable");
-        // Por defecto sí se pode redimensionar
-        resizableBox.setSelected(true);
+		CheckBox resizableBox = new CheckBox("Redimensionable");
+		resizableBox.setSelected(true);
 
-        TextField minWidthField = new TextField("200");
+		TextField minWidthField = new TextField("200");
 		TextField minHeightField = new TextField("150");
 		TextField maxWidthField = new TextField("800");
 		TextField maxHeightField = new TextField("600");
 
 		Button aplicarLimitesBtn = new Button("Aplicar Límites");
 		Label avisoLabel = new Label();
-    
-        // 2. Control opacidade e label
-        stage.opacityProperty().bind(opacitySld.valueProperty());
 
-        /*opacityLabel.textProperty().bind(Bindings.createStringBinding(
-			()-> {
-				return String.format("Opacidade : %.2f ", opacitySld.getValue());
-			},
-			opacitySld.valueProperty()));*/
+		// Ligamos a propiedade de opacidade ao valor do slider
+		stage.opacityProperty().bind(opacitySlider.valueProperty());
 
-		opacityLabel.textProperty().bind(Bindings.format("Opacidade : %.2f ", opacitySld.valueProperty()));
-		
-		resizableBox.selectedProperty().addListener((obs,oldVal,newVal) -> {
+		// O Label está ligado a un texto personalizado que dependerá do valor do slider.
+		// Bindings.createStringBinding(lambda, propiedade)
+		opacityLabel.textProperty().bind(Bindings.createStringBinding(
+				() -> String.format("Opacidade: %.2f", opacitySlider.getValue()), opacitySlider.valueProperty())
+		);
+		// Con Bindings.format
+		// opacityLabel.textProperty().bind(Bindings.format("Opacidade: %.2f", opacitySlider.valueProperty()));
+		// A propiedade do checkbox tamén terá un oínte que cambiará a propiedade do
+		// stage setResizable()
+		 resizableBox.selectedProperty().addListener((obs, oldVal, newVal) -> {
 			stage.setResizable(newVal);
 		});
-
-		// Cada que intente clickar estou intentado setear e non podo setear unha propiedade vinculada.
-		// resizableBox.selectedProperty().bind(stage.resizableProperty());
-
+		/* Isto non funciona porque se vinculamos o checkBox á propiedade logo non poderemos
+		 * modificar o checkBox clicando sobre él.
+		resizableBox.selectedProperty().bind(stage.resizableProperty());
+		*/
+		
 
 		aplicarLimitesBtn.setOnAction(e -> {
-			try{
+			try {
 				double minWidth = Double.parseDouble(minWidthField.getText());
 				double minHeight = Double.parseDouble(minHeightField.getText());
 				double maxWidth = Double.parseDouble(maxWidthField.getText());
 				double maxHeight = Double.parseDouble(maxHeightField.getText());
 
-				if (minWidth > maxWidth || minHeight > maxHeight ) {
-					avisoLabel.setText("Os valores mínimos non poden ser maiores que os máximos");
+				// Validamos que os valores teñan lóxica
+				if (minWidth > maxWidth || minHeight > maxHeight) {
+					avisoLabel.setText("Os valores mínimos non poden ser maiores que os máximos!");
 					avisoLabel.setStyle("-fx-text-fill: red;");
 					return;
 				}
-				
+
 				stage.setMinWidth(minWidth);
 				stage.setMinHeight(minHeight);
 				stage.setMaxWidth(maxWidth);
@@ -72,20 +70,23 @@ public class Exercicio5 extends Application {
 				avisoLabel.setText("Límites aplicados correctamente!");
 				avisoLabel.setStyle("-fx-text-fill: green;");
 
-			} catch(NumberFormatException ex) {
-
+			} catch (NumberFormatException ex) {
+				avisoLabel.setText("Introduce valores numéricos válidos!");
+				avisoLabel.setStyle("-fx-text-fill: red;");
 			}
 		});
 
-
-        HBox opacidadeLayout = new HBox(opacityLabel, opacitySld);
+			
+		// Creo primeiro os HBox
+		
+		HBox opacidadeLayout = new HBox(opacityLabel, opacitySlider);
 		HBox anchoMinLayout = new HBox(10, new Label("Ancho mín:"), minWidthField);
 		HBox altoMinLayout = new HBox(10, new Label("Alto mín:"), minHeightField);
 		HBox anchoMaxLayout = new HBox(10, new Label("Ancho máx:"), maxWidthField);
 		HBox altoMaxLayout = new HBox(10, new Label("Alto máx:"), maxHeightField);
 
-        VBox root = new VBox(10,
-                new Label("Control de opacidade"),
+		
+		VBox root = new VBox(10, new Label("Control de opacidade"),
 				opacidadeLayout,
 				resizableBox,
 				new Label("Límites de tamaño:"),
@@ -102,9 +103,9 @@ public class Exercicio5 extends Application {
 		stage.setScene(scene);
 		stage.setTitle("Controlador de propiedades do Stage");
 		stage.show();
-    }
-    
-    public static void main(String[] args) {
-        launch(args);
-    }
+	}
+
+	public static void main(String[] args) {
+		launch(args);
+	}
 }
