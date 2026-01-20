@@ -11,7 +11,9 @@ import javafx.scene.paint.Color;
 import static javafx.stage.StageStyle.*;
 
 public class Exercicio4 extends Application {
-
+//Xestor de estilos de Stage
+	
+	
     @Override
     public void start(Stage stage) {
         stage.setTitle("Xestor de estilos de Stage");
@@ -39,12 +41,17 @@ public class Exercicio4 extends Application {
     }
 
     // Método para abrir unha xanela secundaria segundo o estilo
+/*Ao premer un botón abrirase unha xanela secundaria co estilo correspondente.
+*/
     private void abrirVenta(StageStyle estilo) {
         Stage secundario = new Stage();
         // iniciamos o estilo antes de amosalo
         secundario.initStyle(estilo);
 
+        //-Unha etiqueta que mostre o estilo actual.
         Label lbl = new Label("Estilo: " + estilo.toString());
+        //-Un botón "Pechar" que permita pechar a xanela.
+
         Button btnPechar = new Button("Pechar");
         btnPechar.setOnAction(e -> secundario.close());
 
@@ -53,11 +60,15 @@ public class Exercicio4 extends Application {
 
         Scene escena;
 
-        if (estilo == TRANSPARENT) {
+        if (estilo == TRANSPARENT) { //-Se o estilo é TRANSPARENT, a escena debe ser transparente.
+
             escena = new Scene(layout, 250, 150);
             escena.setFill(null);
             layout.setStyle("-fx-background-color: transparent");	
-        } else if (estilo == UNIFIED) {
+        } else if (estilo == UNIFIED) { 
+        	/*-Se o estilo é UNIFIED, a escena debe ter un fondo transparente,pero a xanela 
+        	debe manter os controis de barra de título.*/
+  
             escena = new Scene(layout, 250, 150);
             escena.setFill(Color.TRANSPARENT); // Fondo transparente
         } else {

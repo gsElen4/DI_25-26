@@ -10,11 +10,17 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 public class Exercicio7 extends Application {
-
+//Traballando co modo de pantalla completa
+	
+	
 	@Override
 	public void start(Stage stage) {
 
 		// botóns precisos
+		/*A diferenza entre o botón de Pantalla completa e Maximizar é que o primeiro 
+		 * cambia a xanela a un modo de pantalla completa, ocultando a barra de título 
+		 * e os bordes, mentres que o segundo simplemente axusta a xanela dentro dos límites da pantalla.
+		 */
 		Button pantCompletaBtn = new Button("Activar/Desactivar pantalla completa");
 		Button maximizarBtn = new Button("Maximizar");
 		Button centrarBtn = new Button("Centrar");
@@ -32,6 +38,7 @@ public class Exercicio7 extends Application {
 			boolean fullscreen = !stage.isFullScreen();
 			stage.setFullScreen(fullscreen);
 
+			/*A etiqueta de pantalla completa debe indicar se a pantalla está en modo completo ou non.*/
 			if (fullscreen) {
 				pantallaCompletaLbl.setText("Desactivar Pantalla Completa");
 			} else {
@@ -48,6 +55,7 @@ public class Exercicio7 extends Application {
 			stage.setHeight(visualBounds.getMaxY());
 		});
 
+		//O botón de restaurar debe devolver a xanela ao seu tamaño e posición orixinal.
 		restaurarBtn.setOnAction(e -> {
 			if (stage.isFullScreen()) {
 				stage.setFullScreen(false); // Sae de pantalla completa
@@ -61,6 +69,8 @@ public class Exercicio7 extends Application {
 
 		
 		// Vinculacións cos Labels de dimesión e posición
+		//A etiqueta de dimensións debe mostrar o ancho e alto da xanela en cada momento.
+		//A etiqueta de posición debe mostrar a posición actual da xanela.
 		dimesionsLbl.textProperty()
 				.bind(Bindings.concat("Ancho: ", stage.widthProperty(), "\nAlto: ", stage.heightProperty()));
 		posicionLbl.textProperty()
@@ -82,4 +92,5 @@ public class Exercicio7 extends Application {
 	public static void main(String[] args) {
 		launch();
 	}
+	//Emprega o método centerOnScreen() para devolver a xanela ao centro da pantalla.
 }

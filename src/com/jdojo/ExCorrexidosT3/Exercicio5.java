@@ -10,6 +10,9 @@ import javafx.stage.Stage;
 
 public class Exercicio5 extends Application {
 
+	//Controlador de propiedades do Stage
+	
+	
 	@Override
 	public void start(Stage stage) {
 		// O primeiro é crear os controis
@@ -109,3 +112,38 @@ public class Exercicio5 extends Application {
 		launch(args);
 	}
 }
+/*Control de opacidade
+
+	Engade un Slider que permita variar a opacidade do Stage entre 0.0 (totalmente transparente) e 1.0 (totalmente opaco).
+	Engade un Label que amose o valor actual do slider con dous decimais. Terás que facer unha vinculación. Usa Bindings.createStringBinding
+	para que o label se actualice automaticamente.
+	Vincula a propiedade do Stage opacityProperty() á propiedade 
+	valueProperty() do Slider para que o valor do Slider afecte directamente á xanela.
+	
+-Control de redimensionamento:
+
+Engade un CheckBox que permita activar ou desactivar a opción de que a xanela sexa redimensionable.
+Pista: usa checkBox.selectedProperty() e un listener para actualizar stage.setResizable().
+
+-Límites de tamaño
+
+-Engade TextField para que o usuario poida definir o ancho e alto mínimo e máximo da xanela.
+
+-Engade un Botón “Aplicar Límites” que valide os valores e actualice 
+stage.setMinWidth(), setMinHeight(), setMaxWidth() e setMaxHeight().
+
+-Mostra mensaxes de aviso se os valores non son correctos (mínimos maiores que
+ máximos ou valores non numéricos).
+
+-Layout: Organiza os elementos usando VBox para a estrutura vertical e 
+HBox para etiquetas e campos que deben ir na mesma fila.	*/
+	
+	
+
+/*Slider.valueProperty() : representa o valor actual do slider e permite ligar outros 
+ * elementos a este valor. CheckBox.selectedProperty() : devolve un booleano (true/false) 
+ * indicando se está marcado ou non. Stage.opacityProperty() : propiedade que controla a opacidade da xanela 
+ * (0.0-1.0). Bindings.createStringBinding(lambda, propiedade) : permite que un label ou outro control actualícese 
+ * automaticamente cun String cando cambie unha propiedade.
+ Non todas as propiedades do Stage se poden ligar directamente (bind), polo que para o CheckBox necesitarás un listener.*/
+

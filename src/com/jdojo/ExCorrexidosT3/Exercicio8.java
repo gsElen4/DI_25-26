@@ -10,14 +10,21 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class Exercicio8 extends Application {
-
+//Sistema de diálogos personalizados 
     private Label resultadoLabel = new Label();
 
     @Override
     public void start(Stage primaryStage) {
     	
+    	/*        Crearemos un botón para cada tipo de diálogo: información, advertencia,
+    	erro e confirmación.*/
     	// Creamos os botóns coas súas accións
+    	/*Cada botón debe abrir unha xanela cun diálogo correspondente ao
+    	 *  tipo de mensaxe ao que pertence.
+    	 */
     	Button infoBtn = new Button("Diálogo info");
+    	/*O diálogo de información deberá amosar a mensaxe "Esta é unha mensaxe informativa." 
+    	 * xunto cun icono de información. O fondo deste diálogo será lightblue.*/
         infoBtn.setOnAction(e -> {
         	mostrarDialogo("Información", "Esta é unha mensaxe informativa.",
         			"ℹ", "-fx-background-color: lightblue;");
@@ -25,13 +32,20 @@ public class Exercicio8 extends Application {
         });
 
         Button avisoBtn = new Button("Diálogo aviso");
+        /*O diálogo de advertencia deberá mostrar a mensaxe "Atención! 
+         * Esta acción pode ter consecuencias." xunto cun icono de advertencia. 
+         * O fondo deste diálogo será orange.*/
         avisoBtn.setOnAction(e -> {
+        	
         	mostrarDialogo("Advertencia", "Atención! Esta acción pode ter consecuencias.",
         			"！", "-fx-background-color: orange;");
         	resultadoLabel.setText("Diálogo Aviso: Aceptado");
         });
 
         Button erroBtn = new Button("Diálogo erro");
+        /*O diálogo de erro deberá amosar a mensaxe "Ocorreu un erro inesperado na aplicación." 
+         * xunto cun icono de erro. O fondo deste diálogo será lightcoral.
+         */
         erroBtn.setOnAction(e -> {
         	mostrarDialogo("Erro", "Ocorreu un erro inesperado na aplicación.",
         			"✖", "-fx-background-color: lightcoral;");
@@ -39,6 +53,9 @@ public class Exercicio8 extends Application {
         });
 
         Button confirmacionBtn = new Button("Diálogo confirmación");
+        /*O diálogo de confirmación deberá amosar a mensaxe "Estás seguro de que queres continuar?"
+         *  xunto cun icono de confirmación.  O fondo deste diálogo será lightgreen.
+         */
         confirmacionBtn.setOnAction(e -> {
         	mostrarDialogo("Confirmación", "Estás seguro de que queres continuar?",
         			"？", "-fx-background-color: lightgreen;");

@@ -10,12 +10,16 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
+//Mover a xanela
 public class Exercicio1 extends Application {
 	@Override
 	public void start(Stage stage) {
 		// Obtemos límites da pantalla
 		Rectangle2D visualBounds = Screen.getPrimary().getVisualBounds();
 
+	/*	Mostrar dous campos de texto para que o usuario 
+	 * introduza as coordenadas X e Y.*/
+	 
 		Label label = new Label("Introduce as coordenadas X e Y:");
 		TextField xField = new TextField();
 		xField.setPromptText("0 - " + visualBounds.getMaxX());
@@ -25,18 +29,25 @@ public class Exercicio1 extends Application {
 		Label avisoLabel = new Label();
 
 		// Botón para aplicar os cambios
+		/*Mostrar un botón "Mover Stage" que aplique as coordenadas á xanela.*/
 		Button moverButton = new Button("Mover Stage");
 		moverButton.setOnAction(e -> {
 			// Verificar que os valores son numéricos parseando a double
+			//Comprobar que os valores introducidos son números válidos.
 			try {
 				double x = Double.parseDouble(xField.getText());
 				double y = Double.parseDouble(yField.getText());
 
 				// Verificamos os límites para non mover fóra deles.
+				/*Comprobar que as coordenadas están dentro dos límites visibles da pantalla e avisar se 
+				  o usuario introduce valores fóra de rango.*/
 				if (x > visualBounds.getMinX() && x < visualBounds.getMaxX() - stage.getWidth() && y > visualBounds.getMinY()
 						&& y < visualBounds.getMaxY() - stage.getHeight()) {
 					stage.setX(x);
 					stage.setY(y);
+					
+					/*Informar ao usuario mediante unha etiqueta 
+					  se a operación foi correcta ou se houbo algún erro.*/
 					avisoLabel.setText("Stage movido correctamente.");
 					
 				} else {
@@ -61,5 +72,4 @@ public class Exercicio1 extends Application {
 	public static void main(String[] args) {
 		launch();
 	}
-
 }

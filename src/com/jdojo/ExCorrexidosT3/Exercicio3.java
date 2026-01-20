@@ -9,6 +9,11 @@ import javafx.stage.Stage;
 
 public class Exercicio3 extends Application {
 
+	//Leer propiedades da xanela
+	/*Non se deben usar botóns nin accións manuais; toda a actualización 
+	 * debe facerse mediante bindings de JavaFX.
+	 */
+	
 	@Override
 	public void start(Stage stage) {
 
@@ -17,9 +22,15 @@ public class Exercicio3 extends Application {
 		Label widthLabel = new Label();
 		Label heightLabel = new Label();
 
+		/*As etiquetas deben actualizarse automáticamente cando o usuario 
+		  move ou redimensiona a xanela.*/
+		 
+		
 		// Vinculamos as etiquetas co estado das propiedades do Stage
+		/*Mostrar a coordenada X e Y da xanela.*/
 		xLabel.textProperty().bind(Bindings.concat("X: ", stage.xProperty()));
 		yLabel.textProperty().bind(Bindings.concat("Y: ", stage.yProperty()));
+	//Mostrar o ancho e alto actuais da xanela.
 		widthLabel.textProperty().bind(Bindings.concat("Ancho: ", stage.widthProperty()));
 		heightLabel.textProperty().bind(Bindings.concat("Alto: ", stage.heightProperty()));
 

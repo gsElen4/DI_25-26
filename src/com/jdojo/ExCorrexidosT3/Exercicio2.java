@@ -14,6 +14,7 @@ import javafx.stage.Window;
 
 import static javafx.stage.Modality.*;
 
+//Mover a xanela con listeners
 public class Exercicio2 extends Application {
 
 	@Override
@@ -27,17 +28,23 @@ public class Exercicio2 extends Application {
 		TextField yField = new TextField();
 		yField.setPromptText("0 - " + visualBounds.getMaxY());
 
+		/*Ao escribir novas coordenadas X e Y nos campos de texto, a 
+		 xanela se mova automaticamente sen premer un botón.*/
 		// Creamos listener ligados aos TextField para mover o stage
 		xField.textProperty().addListener((obs, oldVal, newVal) -> {
 			try {
 				Double x = Double.parseDouble(newVal);
 
+				/*Se o usuario introduce valores fóra dos límites visibles da pantalla, apareza unha 
+				 caixa de diálogo informando do erro.*/
 				if (x < visualBounds.getMinX() || x > visualBounds.getMaxX() - stage.getWidth()) {
 					showDialog(stage, WINDOW_MODAL, "Ancho fóra do rango");
 				} else {
 					stage.setX(x);
 				}
 			} catch (NumberFormatException e) {
+				/*Se o usuario introduce texto que non sexa un número, tamén 
+				 */
 				showDialog(stage, WINDOW_MODAL, "Débense escribir números.");
 			}
 		});
@@ -69,9 +76,13 @@ public class Exercicio2 extends Application {
 	private void showDialog(Window owner, Modality modality, String msg) {
 		Stage stage = new Stage(); // Nova xanela
 		stage.initOwner(owner);// Configuramos o propietario desta nova xanela
-		stage.initModality(modality); // e a modalidade
+	
+	/*	As caixas de diálogo deben ser modais respecto á xanela principal (non se 
+		pode interactuar coa xanela principal ata pechar a caixa de diálogo).*/
+		stage.initModality(modality); 
 
 		Label avisoLabel = new Label(msg);
+		/*Cada caixa de diálogo terá un botón "Pechar" que permita ao usuario pechala.*/
 		Button closeButton = new Button("Pechar");
 		closeButton.setOnAction(e -> stage.close());
 
@@ -89,3 +100,10 @@ public class Exercicio2 extends Application {
 		launch(args);
 	}
 }
+/*As propiedades stage.xProperty() e stage.yProperty() son
+*  ReadOnlyDoubleProperty, non DoubleProperty. Iso significa que non 
+*  podes facer bind() directamente, porque JavaFX non permite ligar ou 
+*  supeditar propiedades de só de lectura a outras propiedades. 
+*  Terás que usar métodos como setX() e setY() para mover a xanela dende un 
+*  listener de cambio sobre os campos de texto, é dicir, cando cambie o
+*  texto do campo o escoitamos e chamamos aos métodos setX() e setY()*/

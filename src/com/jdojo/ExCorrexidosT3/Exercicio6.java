@@ -10,7 +10,9 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class Exercicio6 extends Application {
-
+// Xestor de modalidade
+	
+	
 	@Override
     public void start(Stage stage) {
     	// Botóns para abrir as diferentes ventás

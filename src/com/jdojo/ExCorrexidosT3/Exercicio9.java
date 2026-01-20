@@ -21,7 +21,9 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+
 public class Exercicio9 extends Application {
+	//Creador de xanelas
 	
 	// Creamos o array que conterá as Stage fillas
 	private List<Stage> xanelasFillas = new ArrayList<>();
@@ -123,3 +125,7 @@ public class Exercicio9 extends Application {
 		launch(args);
 	}
 }
+/*O botón de pechar todas non funcionará no caso de que as xanelas fillas estean en 
+ * modo Window Modal ou Application Modal. Cando o estilo da xanela teña os botóns de peche, 
+ * como DECORATED ou UTILITY, no haberá problema. No obstante, deberemos crear un botón de peche
+ *  cando as xanelas non teñan os botóns de peche, xa que senón a aplicación quedará bloqueada.*/
