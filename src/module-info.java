@@ -19,6 +19,7 @@ module HolaFX {
 	opens com.jdojo.ExCorrexidosT3 to javafx.graphics, javafx.base;
 
 	opens com.jdojo.fxmlExercicios.Controlador to javafx.graphics, javafx.base, javafx.fxml;
-	// opens com.jdojo.fxmlExercicios.Modelo to javafx.graphics, javafx.base,
-	// javafx.fxml;
+
+	opens com.jdojo.fxmlExercicios.Modelo to javafx.graphics, javafx.base, javafx.fxml;
+
 }

@@ -32,11 +32,6 @@ public class Persona {
 		this.idade = idade;
 	}
 
-	/*@Override
-	public int hashCode() {
-		return Objects.hash(apelidos, idade, nome);
-	}*/
-
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
