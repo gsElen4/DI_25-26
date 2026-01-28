@@ -110,12 +110,17 @@ public class Ex4Controller implements Initializable {
 				int idade = Integer.parseInt(this.txtIdade.getText());
 				
 				Persona aux = new Persona(nome, apelidos, idade);
-				if(!this.persoas.contains(aux)) {
+								if(!this.persoas.contains(aux)) {
 					p.setNome(aux.getNome());
 					p.setApelidos(aux.getApelidos());
 					p.setIdade(aux.getIdade());
+					
+					this.tablaPersona.refresh();
 					//INFORMATION éxito
-					amosarAlerta(AlertType.INFORMATION, "A persoa se mdificou correctamente");
+					amosarAlerta(AlertType.INFORMATION, "A persoa se modificou correctamente");
+					this.txtNome.clear();
+					this.txtApelidos.clear();
+					this.txtIdade.clear();
 				}else {
 					//ERRO non se modificaron datos
 					amosarAlerta(AlertType.ERROR, "Non hai datos que modificar");
