@@ -14,7 +14,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class Ex6ControllerCrear implements Initializable{
+public class Ex7ControllerCrear implements Initializable{
+	@FXML
+    private TextField TxtFieldFiltro;
 
     @FXML
     private TextField TxtFieldApelidos;
