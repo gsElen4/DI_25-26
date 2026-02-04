@@ -11,7 +11,7 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jdojo.fxmlExercicios.Controlador.Ex7ControllerTaboa">
    <children>
       <Label layoutX="34.0" layoutY="40.0" text="Filtra polo nome " />
-      <TextField fx:id="TxtFieldFiltro" layoutX="130.0" layoutY="32.0" onAction="#filtrar" prefHeight="32.0" prefWidth="449.0" />
+      <TextField fx:id="TxtFieldFiltro" layoutX="130.0" layoutY="32.0" onKeyReleased="#filtrarNome" prefHeight="32.0" prefWidth="449.0" />
       <TableView fx:id="tablaPersoa" layoutX="33.0" layoutY="90.0" prefHeight="160.0" prefWidth="547.0">
         <columns>
           <TableColumn fx:id="columnNome" prefWidth="166.0" text="Nome" />

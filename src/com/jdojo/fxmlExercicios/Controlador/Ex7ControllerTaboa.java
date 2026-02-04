@@ -21,96 +21,132 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class Ex7ControllerTaboa implements Initializable {
 
-    @FXML
-    private TextField TxtFieldFiltro;
-    @FXML
-    private Button btnAgregar;
+	@FXML
+	private TextField TxtFieldFiltro;
+	@FXML
+	private Button btnAgregar;
 
-    @FXML
-    private Button btnBorrar;
+	@FXML
+	private Button btnBorrar;
 
-    @FXML
-    private Button btnModificar;
+	@FXML
+	private Button btnModificar;
 
-    @FXML
-    private TableColumn<?, ?> columnApelidos;
+	@FXML
+	private TableColumn<?, ?> columnApelidos;
 
-    @FXML
-    private TableColumn<?, ?> columnIdade;
+	@FXML
+	private TableColumn<?, ?> columnIdade;
 
-    @FXML
-    private TableColumn<?, ?> columnNome;
+	@FXML
+	private TableColumn<?, ?> columnNome;
 
-    @FXML
-    private TableView<Persona> tablaPersoa;
-    
-    ObservableList<Persona> persoas;
+	@FXML
+	private TableView<Persona> tablaPersoa;
 
-    @FXML
-    void agregarPersoa(ActionEvent event) {
-		
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/jdojo/fxmlExercicios/Vista/Ex5VistaPersoa.fxml"));
-		
+	//Todas las personas
+	ObservableList<Persona> persoas;
+	
+	//Personas filtradas
+	ObservableList<Persona> persoasFiltradas;
+
+	@FXML
+	void agregarPersoa(ActionEvent event) {
+
+		FXMLLoader loader = new FXMLLoader(
+				getClass().getResource("/com/jdojo/fxmlexercicios/Vista/Ex7VistaCrear.fxml"));
+
 		try {
-		Parent root = loader.load();
-		
-		Ex5ControllerTaboa controlador = loader.getController();
-		controlador.cargarDatos(persoas);
-		Scene scene = new Scene(root);
-		Stage stage = new Stage();
-		stage.initModality(Modality.APPLICATION_MODAL);
-		stage.setScene(scene);
-		stage.showAndWait();
-		
-		Persona p  = controlador.getPersoa();
-		
-		
-		persoas.add(p);
-		tablaPersoa.refresh();
-		
-	}catch(IOException e ) {
-		e.printStackTrace();
-	}
+			Parent root = loader.load();
+			Ex7ControllerCrear controlador = loader.getController();
+
+			controlador.cargarDatos(persoas);
+
+			Scene scene = new Scene(root);
+			Stage stage = new Stage();
+			stage.initModality(Modality.APPLICATION_MODAL);
+			stage.setScene(scene);
+			stage.showAndWait();
+
+			// Cando pechemos o dialogo de engadir persona
+
+			Persona p = controlador.getPersoa();
+
+			// !persoas.contains(p) isto o facemos porque cando ao igualar o ObservableList
+			// persoas desta vista co observableList persoas da outra
+			// creamos unha vinculación entre elas, e ao engadir unha persoa na outra
+			// pantalla, o ObservableList desta vese afectado
+			//
+
+			if (p != null && !persoas.contains(p)) {
+				this.persoas.add(p);
+				this.tablaPersoa.refresh();
+			}
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 
-    @FXML
-    void borrarPersoa(ActionEvent event) {
-    	//Paso 1 coller persoa da táboa e quitala da lista
+	@FXML
+	void borrarPersoa(ActionEvent event) {
+		// Paso 1 coller persoa da táboa e quitala da lista
+
+		Persona p = this.tablaPersoa.getSelectionModel().getSelectedItem();
+		if (p != null) {
+			this.persoas.remove(p);
+			this.tablaPersoa.refresh();
+			amosarAlerta(Alert.AlertType.INFORMATION, "A persoa foi eliminada");
+		} else {
+			amosarAlerta(Alert.AlertType.ERROR, "Debes seleccionar unha persoa");
+		}
+	}
+
+	@FXML
+    void filtrarNome(KeyEvent event) {
+String filtroNome = this.TxtFieldFiltro.getText();
     	
-    	Persona p = this.tablaPersoa.getSelectionModel().getSelectedItem();
-    	if(p!= null) {
-    		this.persoas.remove(p);
-    		this.tablaPersoa.refresh();
-    		amosarAlerta(Alert.AlertType.INFORMATION,"A persoa foi eliminada");
+    	if(filtroNome.isEmpty()) {
+    		this.tablaPersoa.setItems(persoas);
     	} else {
-    		amosarAlerta(Alert.AlertType.ERROR, "Debes seleccionar unha persoa");
+    		
+    		this.persoasFiltradas.clear();
+    		
+    		for(Persona p : persoas) {
+    			
+    			if(p.getNome().toLowerCase().contains(filtroNome.toLowerCase())) {
+    				this.persoasFiltradas.add(p);
+    			}
+    		}
+    		
+    		this.tablaPersoa.setItems(persoasFiltradas);
     	}
     }
-    
-    @FXML
-    void filtrar(ActionEvent event) {
 
-    }
 
-    @FXML
-    void modificarPersoa(ActionEvent event) {
-    	/*FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/jdojo/fxmlExercicios/Vista/Ex5VistaPersoa.fxml"));
-	*/	Persona per =  this.tablaPersoa.getSelectionModel().getSelectedItem();
+	@FXML
+	void modificarPersoa(ActionEvent event) {
 		
-		if(per == null) {
+		Persona per = this.tablaPersoa.getSelectionModel().getSelectedItem();
+
+		if (per == null) {
 			amosarAlerta(Alert.AlertType.ERROR, "Debes seleccionar unha persoa");
 		} else {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/jdojo/fxmlExercicios/Vista/Ex6VistaCrear.fxml"));
+			FXMLLoader loader = new FXMLLoader(
+					getClass().getResource("/com/jdojo/fxmlExercicios/Vista/Ex7VistaCrear.fxml"));
 
 			try {
 				Parent root = loader.load();
-				Ex6ControllerCrear controlador = loader.getController();
-				
+				Ex7ControllerCrear controlador = loader.getController();
+
 				// Paso 3 sobrecargo o método cargarDatos para que tamén acepte unha persoa
 				controlador.cargarDatos(persoas, per);
 
@@ -135,25 +171,26 @@ public class Ex7ControllerTaboa implements Initializable {
 					this.persoas.add(p);
 					this.tablaPersoa.refresh();
 				}
-				
 
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
-    }
-    
-    void amosarAlerta(AlertType tipo, String msg) {
-    	Alert alerta = new Alert(tipo);
-    	alerta.setHeaderText(null);
-    	alerta.setTitle(tipo.toString());
-    	alerta.setContentText(msg);
-    }
+	}
+
+	void amosarAlerta(AlertType tipo, String msg) {
+		Alert alerta = new Alert(tipo);
+		alerta.setHeaderText(null);
+		alerta.setTitle(tipo.toString());
+		alerta.setContentText(msg);
+	}
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		persoas = FXCollections.observableArrayList();
+persoas = FXCollections.observableArrayList();
+		
+		persoasFiltradas = FXCollections.observableArrayList();
 
 		this.tablaPersoa.setItems(persoas);
 

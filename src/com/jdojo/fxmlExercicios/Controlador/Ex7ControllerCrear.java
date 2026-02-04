@@ -15,9 +15,6 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class Ex7ControllerCrear implements Initializable{
-	@FXML
-    private TextField TxtFieldFiltro;
-
     @FXML
     private TextField TxtFieldApelidos;
 
@@ -46,7 +43,8 @@ public class Ex7ControllerCrear implements Initializable{
 			
 			if (nome == null || nome.trim().isEmpty() ||
 		            apelidos == null || apelidos.trim().isEmpty()) {
-				throw new IllegalArgumentException("O nome e os apelidos son obrigatorios");			}
+				throw new IllegalArgumentException("O nome e os apelidos son obrigatorios");			
+				}
 			
 
 			Persona p = new Persona(nome, apelidos, idade);
@@ -138,6 +136,5 @@ public class Ex7ControllerCrear implements Initializable{
 	public void setPersoa(Persona persoa) {
 		this.persoa = persoa;
 	}
-	
 
 }

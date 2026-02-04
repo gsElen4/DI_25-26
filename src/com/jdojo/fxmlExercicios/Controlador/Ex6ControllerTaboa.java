@@ -51,12 +51,12 @@ public class Ex6ControllerTaboa implements Initializable {
     @FXML
     void agregarPersoa(ActionEvent event) {
 		
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/jdojo/fxmlExercicios/Vista/Ex5VistaPersoa.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/jdojo/fxmlExercicios/Vista/Ex6VistaCrear.fxml"));
 		
 		try {
 		Parent root = loader.load();
 		
-		Ex5ControllerTaboa controlador = loader.getController();
+		Ex6ControllerCrear controlador = loader.getController();
 		controlador.cargarDatos(persoas);
 		Scene scene = new Scene(root);
 		Stage stage = new Stage();
