@@ -8,6 +8,7 @@ module HolaFX {
 	requires javafx.fxml;
 	requires jdk.jsobject;
 	requires javafx.base;
+	requires java.sql;
 
 	opens com.jdojo.intro to javafx.graphics, javafx.base;
 	opens com.jdojo.binding to javafx.graphics, javafx.base;
