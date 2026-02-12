@@ -12,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
+
 public class Ex8ControllerMenu implements Initializable {
 
 	@FXML

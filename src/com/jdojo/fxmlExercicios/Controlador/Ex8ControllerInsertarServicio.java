@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -62,7 +63,7 @@ public class Ex8ControllerInsertarServicio implements Initializable {
 	// Ex8 . 3 Agora cando peche a ventá volverei ao menu Principal
 	public void closeWindow() {
 		// Cargamos a vista de Insertar Servizos
-				FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/jdojo/fxmlexercicios/Vista/Ex8MenuVista.fxml"));
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/jdojo/fxmlexercicios/Vista/Ex8VistaMenu.fxml"));
 				try {
 					Parent root = loader.load();
 					Ex8ControllerMenu controlador = loader.getController();

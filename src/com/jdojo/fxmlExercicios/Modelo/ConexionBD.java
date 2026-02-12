@@ -13,7 +13,7 @@ public class ConexionBD {
 			conn = DriverManager.getConnection(
 					"jdbc:mysql://localhost:3306/aluguer_vehiculos",
 					"root", 
-					"1234");
+					"");
 		}
 		return conn;
 	}

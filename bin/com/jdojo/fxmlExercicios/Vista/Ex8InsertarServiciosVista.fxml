@@ -11,7 +11,7 @@
    <children>
       <Label layoutX="73.0" layoutY="59.0" text="Data aluguer" />
       <TextField editable="false" layoutX="368.0" layoutY="334.0" />
-      <Button fx:id="btnGrabar" layoutX="371.0" layoutY="389.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="61.0" text="Grabar" />
+      <Button fx:id="btnGrabar" layoutX="371.0" layoutY="389.0" mnemonicParsing="false" onAction="#grabar" prefHeight="25.0" prefWidth="61.0" text="Grabar" />
       <ComboBox fx:id="cmbClientes" layoutX="589.0" layoutY="90.0" prefWidth="150.0" />
       <Label layoutX="467.0" layoutY="59.0" text="Vehiculo" />
       <Label layoutX="75.0" layoutY="158.0" text="DESCRIPCION" />
